@@ -13,10 +13,31 @@
   transform: translateY(4em);
   opacity: 0;
   animation-name: fade-in;
-  animation-duration: .48s;
+  animation-duration: 0.48s;
   animation-timing-function: linear;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+
+  &__btn {
+    position: absolute;
+    right: 2em;
+    top: 2em;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    width: 6em;
+    height: 6em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    img {
+      pointer-events: none;
+      height: 2.5em;
+      width: auto;
+      display: block;
+    }
+  }
 
   &-photo {
     width: 10em;
@@ -38,29 +59,29 @@
   h1 {
     font-size: 1.5em;
     font-weight: 500;
-    opacity: .8;
-    margin-bottom: .25em;
+    opacity: 0.8;
+    margin-bottom: 0.25em;
   }
 
   p {
-    font-size: .75em;
-    opacity: .48;
+    font-size: 0.75em;
+    opacity: 0.48;
     margin-top: 2em;
     margin-bottom: 2em;
   }
 
   h3 {
     font-weight: 400;
-    opacity: .64;
+    opacity: 0.64;
     font-size: 1em;
   }
 
   &-id {
     background-color: #171717;
     color: #fff;
-    opacity: .8;
-    padding: .25em 1em;
-    border-radius: .25em;
+    opacity: 0.8;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
     font-size: 1em;
   }
 }

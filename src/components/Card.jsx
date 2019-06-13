@@ -1,7 +1,11 @@
 import React, { useContext } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 // load main context
 import { MainContext } from '../store/Store';
+
+// load assets
+import CopyIcon from '../assets/copy.svg';
 
 function Card() {
   const { state } = useContext(MainContext);
@@ -12,6 +16,16 @@ function Card() {
 
   return (
     <div className="box card">
+      <CopyToClipboard
+        text="kopyaladi mi hocam"
+      >
+        <button
+          type="button"
+          className="card__btn"
+        >
+          <img src={CopyIcon} alt="icon" />
+        </button>
+      </CopyToClipboard>
       <div className="card-photo">
         <img src={state.profile_pic_url_hd} alt="p" />
       </div>
