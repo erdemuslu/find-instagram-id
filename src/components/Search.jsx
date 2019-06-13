@@ -10,6 +10,7 @@ import updateData from '../actions/updateData';
 function Search() {
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState('');
+  const [found, setFound] = useState(true);
 
   const { dispatch } = useContext(MainContext);
 
@@ -21,11 +22,18 @@ function Search() {
 
     axios.get(`https://www.instagram.com/${value}/?__a=1`)
       .then(({ data: { graphql: { user } } }) => {
+        console.log(user);
         setLoading(false);
+        setFound(true);
 
         dispatch(updateData(user));
       })
-      .catch(error => console.log(error.message));
+      .catch(() => {
+        setFound(false);
+        setLoading(false);
+
+        dispatch(updateData(null));
+      });
   };
 
   return (
@@ -44,6 +52,7 @@ function Search() {
           Search
         </button>
       </form>
+      { !found ? <div className="search-alert">not found</div> : '' }
     </div>
   );
 }

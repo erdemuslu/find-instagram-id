@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 // load main context
@@ -8,7 +8,17 @@ import { MainContext } from '../store/Store';
 import CopyIcon from '../assets/copy.svg';
 
 function Card() {
+  const [copied, setCopied] = useState(false);
+
   const { state } = useContext(MainContext);
+
+  const handleAlert = () => {
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 480);
+  };
 
   if (state === null) {
     return false;
@@ -17,7 +27,8 @@ function Card() {
   return (
     <div className="box card">
       <CopyToClipboard
-        text="kopyaladi mi hocam"
+        text={state.id}
+        onCopy={handleAlert}
       >
         <button
           type="button"
@@ -26,6 +37,7 @@ function Card() {
           <img src={CopyIcon} alt="icon" />
         </button>
       </CopyToClipboard>
+      { copied ? <span className="card__copied">Copied</span> : '' }
       <div className="card-photo">
         <img src={state.profile_pic_url_hd} alt="p" />
       </div>

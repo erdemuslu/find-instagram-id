@@ -11,29 +11,45 @@
   justify-content: center;
   align-items: center;
   transform: translateY(4em);
-  opacity: 0;
-  animation-name: fade-in;
-  animation-duration: 0.48s;
-  animation-timing-function: linear;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
 
-  &__btn {
+  &, &__copied {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.48s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  &__copied, &__btn {
     position: absolute;
-    right: 2em;
     top: 2em;
-    background-color: #f1f1f1;
-    border-radius: 50%;
-    width: 6em;
-    height: 6em;
+    height: 4em;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__copied {
+    right: 8em;
+    color: #171717;
+    text-transform: uppercase;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+  }
+
+  &__btn {
+    font-size: 16px;
+    right: 2em;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    width: 4em;
     cursor: pointer;
 
     img {
       pointer-events: none;
-      height: 2.5em;
+      height: 1.5em;
       width: auto;
       display: block;
     }
