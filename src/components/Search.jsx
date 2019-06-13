@@ -1,25 +1,51 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
-class Search extends Component {
-  state = {
-    data: null,
-    error: null,
-  }
+// load main context
+import { MainContext } from '../store/Store';
 
-  // componentDidMount() {
-  //   axios.get('https://www.instagram.com/aysencirak/?__a=1')
-  //     .then(res => console.log(res))
-  //     .catch(error => console.log(error.message));
-  // }
+// load action
+import updateData from '../actions/updateData';
 
-  render() {
-    return (
-      <div role="main">
-        Search component
-      </div>
-    );
-  }
+function Search() {
+  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState('');
+
+  const { dispatch } = useContext(MainContext);
+
+  const handleForm = (e) => {
+    // disable form action
+    e.preventDefault();
+
+    setLoading(true);
+
+    axios.get(`https://www.instagram.com/${value}/?__a=1`)
+      .then(({ data: { graphql: { user } } }) => {
+        setLoading(false);
+
+        dispatch(updateData(user));
+      })
+      .catch(error => console.log(error.message));
+  };
+
+  return (
+    <div className="search">
+      <form className="search-form" onSubmit={handleForm}>
+        <input
+          type="text"
+          placeholder="Type to username"
+          onChange={({ target }) => setValue(target.value)}
+        />
+        <button
+          type="button"
+          className={`btn ${loading ? ' btn--loading' : ''}`}
+          onClick={handleForm}
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  );
 }
 
 export default Search;

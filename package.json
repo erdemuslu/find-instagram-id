@@ -4,7 +4,7 @@
   "description": "Find instagram id with username",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel index.html --port 12345",
     "build": "parcel build index.html --no-source-maps",
     "clean": "rm -rf .cache dist",
     "deploy": "npm run clean && npm run build && surge dist find-instagram-id.surge.sh"
