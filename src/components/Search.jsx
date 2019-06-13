@@ -22,7 +22,6 @@ function Search() {
 
     axios.get(`https://www.instagram.com/${value}/?__a=1`)
       .then(({ data: { graphql: { user } } }) => {
-        console.log(user);
         setLoading(false);
         setFound(true);
 
