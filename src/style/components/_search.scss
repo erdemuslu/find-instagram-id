@@ -1,4 +1,5 @@
 .search {
+  $this: &;
   width: 100%;
 
   &-alert {
@@ -22,6 +23,29 @@
       flex-grow: 1;
       height: 100%;
       font-size: 1em;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #{$this}-form {
+      flex-direction: column;
+      height: auto;
+      background-color: transparent;
+
+      input, button {
+        width: 100%;
+        height: 4em;
+      }
+
+      input {
+        background-color: #F1F1F1;
+      }
+
+      button {
+        margin-top: .5em;
+        display: inline-flex;
+        align-items: center;
+      }
     }
   }
 }

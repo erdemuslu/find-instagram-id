@@ -8,4 +8,9 @@
   justify-content: flex-start;
   align-items: center;
   padding-top: 8em;
+
+  @media screen and (max-width: 768px) {
+    width: calc(100% - 4em);
+    height: auto;
+  }
 }

@@ -6,11 +6,13 @@
 }
 
 .card {
+  $this: &;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transform: translateY(4em);
+  margin-bottom: 6em;
 
   &, &__copied {
     opacity: 0;
@@ -99,5 +101,19 @@
     padding: 0.25em 1em;
     border-radius: 0.25em;
     font-size: 1em;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-top: 6em;
+
+    #{$this}__btn, #{$this}__copied {
+      z-index: 3;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #{$this}__copied {
+      top: 6em;
+    }
   }
 }
