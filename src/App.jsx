@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// load components
+import Search from './components/Search';
+
 class App extends Component {
   state = {
     name: 'Erdem',
@@ -13,6 +16,7 @@ class App extends Component {
       <div role="main">
         { name }
         { age }
+        <Search />
       </div>
     );
   }
